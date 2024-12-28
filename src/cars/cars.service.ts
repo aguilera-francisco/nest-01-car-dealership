@@ -4,23 +4,7 @@ import { CreateCarDto, UpdateCarDto } from './dto';
 import { ICar } from './interfaces/car.interface';
 @Injectable()
 export class CarsService {
-    private cars: ICar[] = [
-        {
-            id: uuid(),
-            brand: 'Toyota',
-            model: 'Corolla'
-        },
-        {
-            id: uuid(),
-            brand: 'Honda',
-            model: 'Civic'
-        },
-        {
-            id: uuid(),
-            brand: 'Jeep',
-            model: 'Cherokee'
-        }
-    ]
+    private cars: ICar[];
     findAll(){
         return this.cars;
     }
@@ -60,5 +44,8 @@ export class CarsService {
         const index = this.cars.indexOf(carToDelete);
         this.cars.splice(index, 1);
         return carToDelete;
+    }
+    fillCarsWithSeedData(cars: ICar[]){
+        this.cars = cars;
     }
 }
